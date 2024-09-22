@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Latest CNN News{% endblock title %}
+
+{% block main %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center mb-4">Latest CNN News</h1>
+
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            {% if news %}
+                <div class="list-group">
+                    {% for item in news %}
+                        <a href="{{ item.url }}" class="list-group-item list-group-item-action" target="_blank">
+                            {{ item.title }}
+                        </a>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-info" role="alert">
+                    No news available at this time.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock main %}

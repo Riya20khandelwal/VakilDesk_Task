@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Rate Limiter{% endblock title %}
+
+{% block main %}
+    <div class="container mt-5">
+        <h2>Rate Limiter Check</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="user_id" class="form-label">User ID</label>
+                <input type="text" name="user_id" class="form-control" id="user_id" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Check Rate Limit</button>
+        </form>
+        
+        {% if remaining_requests is not None %}
+            <div class="alert alert-success mt-3">
+                Request allowed for user <strong>{{ user_id }}</strong>. You have <strong>{{ remaining_requests }}</strong> requests remaining.
+            </div>
+        {% elif error_message %}
+            <div class="alert alert-danger mt-3">
+                {{ error_message }}
+            </div>
+        {% endif %}
+{% endblock main %}

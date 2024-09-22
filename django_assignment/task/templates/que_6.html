@@ -1,0 +1,73 @@
+
+{% extends "base.html" %}
+{% block title %}Find Duplicate Value{% endblock title %}
+
+{% block main %}
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Find Duplicate Number</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="n">Length of the array (n):</label>
+                <input type="number" id="n" name="n" required>
+            </div>
+            <div class="form-group">
+                <label for="nums">Enter numbers (comma-separated):</label>
+                <input type="text" id="nums" name="nums" placeholder="e.g. 1, 3, 4, 2, 2" required>
+            </div>
+            <input type="submit" value="Find Duplicate">
+        </form>
+
+        {% if duplicate %}
+        <div class="result">
+            <h3>Duplicate Number:</h3>
+            <p>{{ duplicate }}</p>
+        </div>
+        {% endif %}
+    </div>
+{% endblock main %}

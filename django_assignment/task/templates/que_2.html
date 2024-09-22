@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Cleaned CSV Data{% endblock title %}
+
+{% block main %}
+<div class="container mt-5">
+    <h2>Download Cleaned CSV File</h2>
+    <p>Click the button below to create and download the cleaned CSV file:</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Create Cleaned CSV</button>
+    </form>
+</div>
+{% endblock main %}

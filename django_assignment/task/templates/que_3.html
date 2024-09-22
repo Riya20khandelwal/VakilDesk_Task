@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Top 5 Customers{% endblock title %}
+
+{% block main %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center mb-4">Top 5 Customers (Last 6 Months)</h1>
+            
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Customer Name</th>
+                            <th scope="col">Total Spent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in customers %}
+                        <tr>
+                            <td>{{ c.customer }}</td>
+                            <td>${{ c.total_spent }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="text-center mt-4">
+                <a class="btn btn-primary btn-lg" href="{% url 'all_customers' %}">View All Customer Orders</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}All Customers{% endblock title %}
+
+{% block main %}
+
+    <center><u><h1>All Customer Data</h1></u></center><br>
+    <table class="table">
+        <tr>
+            <th>Customer Id </th>
+            <th>Customer Name </th>
+            <th>Customer Status </th>
+            <th> Spent Amount </th>
+        </tr>
+        {% for c in customers %}
+        <tr>
+            <td>{{c.id}}</td>
+            <td>{{c.customer}}</td>
+            <td>{{c.status}}</td>
+            <td>{{c.total_amount}}</td>
+        {% endfor %}
+    </table>
+{% endblock main %}
