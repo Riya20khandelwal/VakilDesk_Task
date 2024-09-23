@@ -2,7 +2,7 @@
 
 # 1. Set Up Virtual Environment
 # First, create a virtual environment to isolate your Python dependencies for this project.
-python -m venv environment
+python -m venv environ
 
 # 2. Activate the Virtual Environment
 # Activate the environment to ensure all dependencies are installed within it.
