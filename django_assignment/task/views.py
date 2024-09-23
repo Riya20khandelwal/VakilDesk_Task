@@ -27,7 +27,14 @@ def question_1(request):
                 link = n.find('a')
                 if link:
                     d['url'] = "https://edition.cnn.com" + link['href']
-                    d['title'] = link.get_text()
+                    # d['title'] = link.get_text()
+                    # d['title'] = link.find('span')
+                    span = link.find('span', class_='container__headline-text')
+                    if span:
+                        d['title'] = span.get_text() 
+                    else:
+                        # d['title'] = link.get_text() 
+                        continue
 
                     news.append(d)
 
